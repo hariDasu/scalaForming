@@ -1,14 +1,22 @@
 
-@(customerForm:Form[Customer])
+@(studentForm:Form[Student])
 
 @import helper.twitterBootstrap._
 @import helper._
 
-@main("Customer Form") {
-    @form(action=routes.Application.createCustomer()) {
-        @inputText(customerForm("Credit Limit"))
-        @inputText(customerForm("Customer Name"))
+@main("Basic Info") {
+    @form(action=routes.Application.createStudent()) {
+        @inputText(studentForm("First Name"))
+        @inputText(studentForm("Last Name"))
+        @inputCheckboxGroup(studentForm(Seq[("Music","Sports")]))
+    
+
         <input type="submit" value="Submit">
+        <!--<label>
+                <input type="checkbox"> Check me out
+            </label>
+        </div>
+        <input type="submit" value="Submit">-->
     }
 }
 

@@ -4,37 +4,42 @@ import play.api._
 import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
-import models.Customer
+import models.{Hobbies, Student}
 
 object Application extends Controller {
 
-  def customerForm = Form(mapping("Customer Name" -> nonEmptyText, "Credit Limit"->number(min=0,max=100000))(Customer.apply)(Customer.unapply))
+  def studentForm = Form(mapping("First Name" -> nonEmptyText, "Last Name"->nonEmptyText,"Music" -> optional(nonEmptyText), "Sports"->optional(nonEmptyText))(Student.apply)(Student.unapply))
+
+
 
   def index = Action {
-    Ok(views.html.index(customerForm))
+    Ok(views.html.index(studentForm))
   }
 
-  def createCustomer = Action {
-    implicit request => customerForm.bindFromRequest().fold(
+  def createStudent = Action {
+
+    implicit request => studentForm.bindFromRequest().fold(
       formWithErrors => BadRequest(views.html.index(formWithErrors)),
-      customer => Ok(views.html.submittedOk(customer))
+      student => Ok(views.html.submittedOk(student))
     )
   }
-  /*
-    def doLogin = Action {
-      implicit request => val loginRequest = loginForm.bindFromRequest.get
-        Ok(s"username: '${loginRequest.username}',password: '${loginRequest.password}'")
-    }
 
-    def loginForm = Form(mapping("username" -> text, "password" -> text)(LoginRequest.apply)(LoginRequest.unapply))
 
-    case class LoginRequest(username:String,password:String)
+    /*
+      def doLogin = Action {
+        implicit request => val loginRequest = loginForm.bindFromRequest.get
+          Ok(s"username: '${loginRequest.username}',password: '${loginRequest.password}'")
+      }
 
-    def handleForm = Action(parse.tolerantFormUrlEncoded) {
-      implicit request =>
-        val username = request.body.get("username").map(_.head).getOrElse("");
-        Ok(views.html.showUserName(username))
-    }*/
+      def loginForm = Form(mapping("username" -> text, "password" -> text)(LoginRequest.apply)(LoginRequest.unapply))
+
+      case class LoginRequest(username:String,password:String)
+
+      def handleForm = Action(parse.tolerantFormUrlEncoded) {
+        implicit request =>
+          val username = request.body.get("username").map(_.head).getOrElse("");
+          Ok(views.html.showUserName(username))
+      }*/
 
   //Implicit conversion
   /*

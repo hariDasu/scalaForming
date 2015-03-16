@@ -1,10 +1,10 @@
-@(customer:Customer)
+@(student:Student)
 
-@main("Customer Created") {
-    <em>The following customer has been created successfully:</em>
+@main("Student Registered") {
+    <em>The following student has been registered successfully:</em>
     <div>
-        Customer Name: @customer.name
+        First Name: @student.fName
         <br>
-        Credit Limit: @customer.creditLimit
+        Last Name: @student.lName
     </div>
 }
