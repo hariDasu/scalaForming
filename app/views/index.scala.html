@@ -5,6 +5,7 @@
 @import helper._
 
 
+
 @main("Basic Info") {
     @form(action=routes.Application.createStudent()) {
         @inputText(studentForm("First Name"))
@@ -42,3 +43,16 @@
     </form>
 </body>
 -->
+
+<script>
+    $(document).ready(function() {
+        $( ":checkbox" ).each(function() {
+            var name = $(this).attr("name");
+            if(typeof(name) != "undefined") {
+            var checkboxString = "";
+        checkboxString = '<input type="hidden" style="display:none;" name="'+ name +'" value="false" />'
+        $(this).after(checkboxString);
+            }
+        });
+    });
+</script>

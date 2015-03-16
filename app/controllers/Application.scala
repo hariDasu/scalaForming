@@ -8,7 +8,11 @@ import models.Student
 
 object Application extends Controller {
 
-  def studentForm = Form(mapping("First Name" -> nonEmptyText, "Last Name"->nonEmptyText,"Music" -> optional(nonEmptyText), "Sports"->optional(nonEmptyText))(Student.apply)(Student.unapply))
+  def studentForm = Form(mapping("First Name" -> nonEmptyText,
+    "Last Name"->nonEmptyText,
+    "Music" -> boolean,
+    "Sports"->boolean)
+    (Student.apply)(Student.unapply))
 
 
 
