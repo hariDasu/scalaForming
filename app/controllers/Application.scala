@@ -17,7 +17,7 @@ object Application extends Controller {
   def createCustomer = Action {
     implicit request => customerForm.bindFromRequest().fold(
       formWithErrors => BadRequest(views.html.index(formWithErrors)),
-      customer => Ok(s"Customer ${customer.name} created successfully")
+      customer => Ok(views.html.submittedOk(customer))
     )
   }
   /*

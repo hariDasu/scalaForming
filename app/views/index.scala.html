@@ -1,16 +1,16 @@
+
 @(customerForm:Form[Customer])
 
+@import helper.twitterBootstrap._
 @import helper._
 
-@main("welcome") {
-    <h1>Customer Form</h1>
+@main("Customer Form") {
     @form(action=routes.Application.createCustomer()) {
         @inputText(customerForm("Credit Limit"))
         @inputText(customerForm("Customer Name"))
         <input type="submit" value="Submit">
     }
 }
-
 
 <!-- old for login form
 <head>
