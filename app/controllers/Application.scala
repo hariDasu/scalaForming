@@ -10,8 +10,8 @@ object Application extends Controller {
 
   def studentForm = Form(mapping("First Name" -> nonEmptyText,
     "Last Name"->nonEmptyText,
-    "Music" -> boolean,
-    "Sports"->boolean)
+    "Music" -> optional(checked("Music")),
+    "Sports"-> optional(checked("Sports")))
     (Student.apply)(Student.unapply))
 
 

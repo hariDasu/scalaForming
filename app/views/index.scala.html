@@ -10,12 +10,8 @@
     @form(action=routes.Application.createStudent()) {
         @inputText(studentForm("First Name"))
         @inputText(studentForm("Last Name"))
-        @inputCheckboxGroup( studentForm("hobbies"),
-                       options = Seq("M" -> "Music", "S" -> "Sports"),
-                       '_label -> "Hobbies",
-                   '_error -> studentForm("hobbies").error.map(_.withMessage("select one or more hobbies")))
-
-
+        @checkbox(studentForm("Music"))
+        @checkbox(studentForm("Sports"))
         <input type="submit" value="Submit">
         <!--<label>
                 <input type="checkbox"> Check me out
@@ -46,7 +42,7 @@
 
 <script>
     $(document).ready(function() {
-        $( ":checkbox" ).each(function() {
+        $( ":hidden" ).each(function() {
             var name = $(this).attr("name");
             if(typeof(name) != "undefined") {
             var checkboxString = "";
