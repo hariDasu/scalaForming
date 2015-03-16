@@ -4,12 +4,16 @@
 @import helper.twitterBootstrap._
 @import helper._
 
+
 @main("Basic Info") {
     @form(action=routes.Application.createStudent()) {
         @inputText(studentForm("First Name"))
         @inputText(studentForm("Last Name"))
-        @inputCheckboxGroup(studentForm(Seq[("Music","Sports")]))
-    
+        @inputCheckboxGroup( studentForm("hobbies"),
+                       options = Seq("M" -> "Music", "S" -> "Sports"),
+                       '_label -> "Hobbies",
+                   '_error -> studentForm("hobbies").error.map(_.withMessage("select one or more hobbies")))
+
 
         <input type="submit" value="Submit">
         <!--<label>
