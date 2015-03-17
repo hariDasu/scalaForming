@@ -11,7 +11,9 @@
                 <a href="/postMusic">Questions about Music...</a>
                 }
         <br>
-        Sports: @student.Sports
-        <!--<a href="/postHobbySelect">Proceed...</a>-->
+        Sports: @if(student.Sports==Some(true)){
+            <a href="/postSports">Questions about Sports...</a>
+        }
+
     </div>
 }

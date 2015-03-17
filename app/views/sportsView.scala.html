@@ -1,0 +1,14 @@
+@(SportsForm:Form[Sports])
+
+@import helper.twitterBootstrap._
+@import helper._
+
+@main("Such music") {
+    <em>Why do you like music?</em>
+    <div>
+    @form(action=routes.Application.sportsStuff()) {
+        @inputText(SportsForm("reasons"))
+        <input type="submit" value="Submit">
+        }
+    </div>
+}
