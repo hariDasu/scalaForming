@@ -1,5 +1,6 @@
 package controllers
 
+import controllers.Application._
 import play.api._
 import play.api.mvc._
 import play.api.data._
@@ -10,8 +11,8 @@ object Application extends Controller {
 
   def studentForm = Form(mapping("First Name" -> nonEmptyText,
     "Last Name"->nonEmptyText,
-    "Music" -> optional(checked("Music")),
-    "Sports"-> optional(checked("Sports")))
+    "Music" -> optional(boolean),
+    "Sports"-> optional(boolean))
     (Student.apply)(Student.unapply))
 
 
@@ -20,6 +21,12 @@ object Application extends Controller {
     Ok(views.html.index(studentForm))
   }
 
+  def music = Action {
+    if (studentForm.student.Music==true){
+      Ok(views.html.Music(studentForm))
+    }else Ok(views.html.index(studentForm))
+
+  }
   def createStudent = Action {
 
     implicit request => studentForm.bindFromRequest().fold(
@@ -27,6 +34,7 @@ object Application extends Controller {
       student => Ok(views.html.submittedOk(student))
     )
   }
+
 
 
     /*
