@@ -7,9 +7,11 @@
         <br>
         Last Name: @student.lName
         <br>
-        Music: @student.Music
+        Music: @if(student.Music==Some(true)){
+                <a href="/postMusic">Questions about Music...</a>
+                }
         <br>
         Sports: @student.Sports
-        <a href="/postHobbySelect">Proceed...</a>
+        <!--<a href="/postHobbySelect">Proceed...</a>-->
     </div>
 }

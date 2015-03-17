@@ -1,6 +1,6 @@
 package controllers
 
-import controllers.Application._
+
 import play.api._
 import play.api.mvc._
 import play.api.data._
@@ -16,17 +16,21 @@ object Application extends Controller {
     (Student.apply)(Student.unapply))
 
 
-
   def index = Action {
     Ok(views.html.index(studentForm))
   }
 
   def music = Action {
-    if (studentForm.student.Music==true){
+    Ok(views.html.Music(studentForm))
+  }
+
+ /* def postMusic = Action {
+    if (Student.){
       Ok(views.html.Music(studentForm))
     }else Ok(views.html.index(studentForm))
 
-  }
+  }*/
+
   def createStudent = Action {
 
     implicit request => studentForm.bindFromRequest().fold(
