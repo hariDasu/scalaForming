@@ -1,0 +1,14 @@
+@(MusicForm:Form[Music])
+
+@import helper.twitterBootstrap._
+@import helper._
+
+@main("Such music") {
+    <em>Why do you like music?</em>
+    <div>
+        @form(action=routes.Application.musicStuff()) {
+            @inputText(MusicForm("reasons"))
+            <input type="submit" value="Submit">
+        }
+    </div>
+}

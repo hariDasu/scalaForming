@@ -1,3 +1,3 @@
 package models
 
-case class Music()
+case class Music(reasons:String)

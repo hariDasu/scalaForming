@@ -6,6 +6,7 @@ import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
 import models.Student
+import models.Music
 
 object Application extends Controller {
 
@@ -15,13 +16,16 @@ object Application extends Controller {
     "Sports"-> optional(boolean))
     (Student.apply)(Student.unapply))
 
+  def MusicForm = Form(mapping("reasons" -> nonEmptyText)
+    (Music.apply)
+    (Music.unapply))
 
   def index = Action {
     Ok(views.html.index(studentForm))
   }
 
   def music = Action {
-    Ok(views.html.Music(studentForm))
+    Ok(views.html.musicView(MusicForm))
   }
 
  /* def postMusic = Action {
@@ -39,6 +43,13 @@ object Application extends Controller {
     )
   }
 
+  def musicStuff = Action {
+
+    implicit request => MusicForm.bindFromRequest().fold(
+      formWithErrors => BadRequest(views.html.musicView(formWithErrors)),
+      music => Ok(views.html.musicStuff(music))
+    )
+  }
 
 
     /*
