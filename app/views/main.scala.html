@@ -39,7 +39,7 @@
         <div class="container">
             <div class="starter-template">
                 <h1>@title</h1>
-                <div class="lead">
+                <div class="lead" id="reactHere">
                 @content
                 </div>
             </div>
@@ -50,5 +50,8 @@
         <script
         src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="@routes.Assets.at("javascripts/bootstrap.min.js")"></script>
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.fullPath("react","JSXTransformer.js"))'></script>
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.fullPath("react","react.js"))'></script>
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.fullPath("flux","Flux.js"))'></script>
     </body>
 </html>

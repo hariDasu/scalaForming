@@ -5,7 +5,7 @@ import play.api._
 import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
-import models.{Student,Music,Sports}
+import models.{Student,Music,Sports,React}
 
 object Application extends Controller {
 
@@ -18,6 +18,8 @@ object Application extends Controller {
   def MusicForm = Form(mapping("reasons" -> nonEmptyText)
     (Music.apply)
     (Music.unapply))
+
+  def ReactForm = Form(mapping("react"->nonEmptyText)(React.apply)(React.unapply))
 
   def SportsForm = Form(mapping("reasons" -> nonEmptyText)
     (Sports.apply)
@@ -62,6 +64,9 @@ object Application extends Controller {
     )
   }
 
+  def react = Action {
+      react => Ok(views.html.react())
+  }
 
     /*
       def doLogin = Action {
