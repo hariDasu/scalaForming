@@ -5,7 +5,7 @@ import play.api._
 import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
-import models.{Student,Music,Sports,React}
+import models.{Student,Music,Sports}
 
 object Application extends Controller {
 
@@ -19,7 +19,7 @@ object Application extends Controller {
     (Music.apply)
     (Music.unapply))
 
-  def ReactForm = Form(mapping("react"->nonEmptyText)(React.apply)(React.unapply))
+
 
   def SportsForm = Form(mapping("reasons" -> nonEmptyText)
     (Sports.apply)
@@ -33,12 +33,6 @@ object Application extends Controller {
     Ok(views.html.musicView(MusicForm))
   }
 
- /* def postMusic = Action {
-    if (Student.){
-      Ok(views.html.Music(studentForm))
-    }else Ok(views.html.index(studentForm))
-
-  }*/
 
   def createStudent = Action {
 
@@ -64,31 +58,14 @@ object Application extends Controller {
     )
   }
 
-  def react = Action {
-      react => Ok(views.html.react())
+  def ngTest = Action {
+      ngTest => Ok(views.html.ngTest())
   }
 
-    /*
-      def doLogin = Action {
-        implicit request => val loginRequest = loginForm.bindFromRequest.get
-          Ok(s"username: '${loginRequest.username}',password: '${loginRequest.password}'")
-      }
+  def reactTest = Action {
+    react =>Ok(views.html.reactTest())
+  }
 
-      def loginForm = Form(mapping("username" -> text, "password" -> text)(LoginRequest.apply)(LoginRequest.unapply))
 
-      case class LoginRequest(username:String,password:String)
-
-      def handleForm = Action(parse.tolerantFormUrlEncoded) {
-        implicit request =>
-          val username = request.body.get("username").map(_.head).getOrElse("");
-          Ok(views.html.showUserName(username))
-      }*/
-
-  //Implicit conversion
-  /*
-  def handleForm = Action(parse.tolerantFormUrlEncoded) {
-    implicit request => val username = request.get("username");
-      Ok(views.html.showUserName(username))
-  }*/
 
 }
